@@ -7,7 +7,7 @@
     "changelog-manager": "bin/index.js"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "repository": {
     "type": "git",

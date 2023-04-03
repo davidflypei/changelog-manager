@@ -69,7 +69,7 @@ describe('Testing Command Releases Add', () => {
       "Changes": {},
       "Releases": {
         "2023.5.0": {
-          "Date": "2023-03-23T03:00:00.000Z"
+          "Date": "2023-03-23T00:00:00.000Z"
         }
       }
     };

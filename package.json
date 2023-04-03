@@ -1,0 +1,39 @@
+{
+  "name": "changelog-manager",
+  "version": "1.0.0",
+  "description": "Manage changelogs with a changes file and JSON.",
+  "main": "bin/index.js",
+  "bin": {
+    "changelog-manager": "bin/index.js"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidflypei/changelog-manager.git"
+  },
+  "keywords": [
+    "changelog",
+    "manage",
+    "cli",
+    "repo"
+  ],
+  "author": "David McKenna",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/davidflypei/changelog-manager/issues"
+  },
+  "homepage": "https://github.com/davidflypei/changelog-manager#readme",
+  "dependencies": {
+    "dayjs": "^1.11.7",
+    "deepmerge": "^4.3.1",
+    "prompt-sync": "^4.2.0",
+    "yargs": "13.2"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0",
+    "jest-when": "^3.5.2",
+    "mock-fs": "^5.2.0"
+  }
+}

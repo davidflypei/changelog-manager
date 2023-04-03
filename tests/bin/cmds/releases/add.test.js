@@ -15,7 +15,7 @@ beforeEach(() => {
     '__mocks__':  mockfs.load(path.resolve(__dirname, '../../../../__mocks__')),
     'node_modules': mockfs.load(path.resolve(__dirname, '../../../../node_modules')),
     'package.json': mockfs.load(path.resolve(__dirname, '../../../../package.json')),
-    'releaseAlreadyExists.json': '{"Changes":{},"Releases":{"2023.5.0":{"Date":"2023-03-23T03:00:00.000Z"}}}',
+    'releaseAlreadyExists.json': '{"Changes":{},"Releases":{"2023.5.0":{"Date":"2023-03-23T00:00:00.000Z"}}}',
   });
 });
 
@@ -50,7 +50,7 @@ describe('Testing Command Releases Add', () => {
       "Changes": {},
       "Releases": {
         "2023.4.0": {
-          "Date": "2023-04-03T03:00:00.000Z",
+          "Date": "2023-04-03T00:00:00.000Z",
         }
       }
     };

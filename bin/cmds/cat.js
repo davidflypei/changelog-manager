@@ -8,10 +8,6 @@ exports.builder = {
     default: 'CHANGELOG.json',
     description: 'Input json file.'
   },
-  o: {
-    description: 'File to save to.',
-    default: 'CHANGELOG.md',
-  },
   l: {
     description: 'Reference link prefix. Change reference gets appended to this.'
   },

@@ -28,8 +28,11 @@ changelog-manager changes add [options]
 
 | Option | Description | Required |
 | --- | --- | --- |
-| -f, --file [file] | The changes file to add changes from. |
-| -r, --release [release] | The release to add the changes to. |
+| -n [value] | Reference value. Typically MR number. | :heavy_check_mark: |
+| -r [release] | The release to add the changes to. | :x: |
+| -i [file] | The changes file to add changes from. | :x: |
+| -o [file] | The changelog json file to add changes to. | :x: |
+| -s | Strict mode. Returns an error if there are non standard sections. | :x: |
 
 ### releases add
 
@@ -39,13 +42,24 @@ Adds a release to the changelog json file.
 changelog-manager releases add [options]
 ```
 
+| Option | Description | Required |
+| --- | --- | --- |
+| -r [release] | Release value | :heavy_check_mark: |
+| -d [date] | Date of release | :x: |
+| -o [file] | The changelog json file. | :x: |
+
 ### releases remove
 
 Removes a release from the changelog json file.
 
 ```bash
-changelog-manager releases remove [options]
+changelog-manager releases remove <release> [options]
 ```
+
+| Option | Description | Required |
+| --- | --- | --- |
+| -f [file] | Changelog JSON file. | :x: |
+| -r | Recursive. Removes all changes associated to release. | :x: |
 
 ### build
 
@@ -55,3 +69,23 @@ Builds the changelog from the changelog json file.
 changelog-manager build [options]
 ```
 
+| Option | Description | Required |
+| --- | --- | --- |
+| -i [file] | Changelog JSON file. | :x: |
+| -o [file] | Output changelog file. | :x: |
+| -l [url] | Reference link prefix. Change reference gets appended to this. | :x: |
+
+### cat
+
+Cats the changelog from the changelog json file.
+
+```bash
+changelog-manager cat [options]
+```
+
+| Option | Description | Required |
+| --- | --- | --- |
+| -i [file] | Changelog JSON file. | :x: |
+| -l [url] | Reference link prefix. Change reference gets appended to this. | :x: |
+| -r [release] | Output specific release. | :x: |
+| --header [text] | Use to replace default header text or set false to leave empty header. | :x: |

@@ -22,7 +22,7 @@ jobs:
     - name: Get Current Changes
       id: changes
       run: |
-        export VERSION=$(cat package.json | jq -r '.version') && echo "CHANGES=$(node bin/index.js cat -r $VERSION)"
+        export VERSION=$(cat package.json | jq -r '.version') && echo "CHANGES=$(node bin/index.js cat -r $VERSION)" >> $GITHUB_ENV
     - uses: ncipollo/release-action@v1
       with:
         body: ${{ steps.changes.outputs.CHANGES }}

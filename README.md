@@ -7,7 +7,7 @@ This tool allows you to manage a changelog with the use of a changes file and JS
 ## Installation
 
 ```bash
-npm install -g changelog-manager
+npm install -g @greathobbies/changelog-manager
 ```
 
 ## Usage

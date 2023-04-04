@@ -11,10 +11,27 @@
     ]
    },
    "Release": "1.0.0"
+  },
+  "2": {
+   "Sections": {
+    "Added": [],
+    "Changed": [],
+    "Deprecated": [],
+    "Removed": [],
+    "Fixed": [
+     "Fixed release action",
+     "Fixed build and cat outputting empty sections"
+    ],
+    "Security": []
+   },
+   "Release": "1.0.1"
   }
  },
  "Releases": {
   "1.0.0": {
+   "Date": "2023-04-04T03:00:00.000Z"
+  },
+  "1.0.1": {
    "Date": "2023-04-04T03:00:00.000Z"
   }
  }

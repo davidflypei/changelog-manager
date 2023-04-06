@@ -36,7 +36,7 @@ exports.handler = function (argv) {
     return false;
   }
 
-  if (readResult.Releases[argv.r]) {
+  if (readResult.Releases[argv.r] && argv.d !== ``) {
     console.error(argv.r + ' already exists.');
     return false;
   }

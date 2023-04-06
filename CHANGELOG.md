@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.1.0] - 2023-04-06
+
+### Added: 
+
+- Added Release set command, so you can bulk set releases on changes. (#3)
+
+### Changed: 
+
+- If you use -d on releases add it will now set the release date. (#3)
+
+
 ## [1.0.1] - 2023-04-04
 
 ### Fixed: 

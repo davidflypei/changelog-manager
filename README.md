@@ -48,6 +48,19 @@ changelog-manager releases add [options]
 | -d [date] | Date of release | :x: |
 | -o [file] | The changelog json file. | :x: |
 
+### releases set
+
+Sets a release to a change or all changes with no release.
+
+```bash
+changelog-manager releases set <release> [options]
+```
+
+| Option | Description | Required |
+| --- | --- | --- |
+| -c [change] | Change to set release to. Don't set to set all changes without a release. | :x: |
+| -o [file] | The changelog json file. | :x: |
+
 ### releases remove
 
 Removes a release from the changelog json file.

@@ -1,19 +1,19 @@
-const fs = require('fs');
+const dayjs = require('dayjs');
 const helpers = require('../../../lib/helpers');
 
-exports.command = 'remove <release>';
-exports.desc = 'Removes release from json file.';
+exports.command = 'set <release>';
+exports.desc = 'Sets a release to a change or all changes with no release.';
 exports.builder = {
-  f: {
-    default: 'CHANGELOG.json',
-    description: 'JSON file.'
+  c: {
+    description: 'Change to set release to.',
   },
-  r: {
-    description: 'Recursive. Removes all changes associated to release.'
-  }
+  o: {
+    description: 'JSON file to save to.',
+    default: 'CHANGELOG.json',
+  },
 };
 exports.handler = function (argv) {
-  let readResult = helpers.readChangeLogJson(argv.f)
+  let readResult = helpers.readChangeLogJson(argv.o)
 
   if (readResult.err) {
     if (argv.verbose) {
@@ -31,19 +31,22 @@ exports.handler = function (argv) {
     return false;
   }
 
-  delete readResult.Releases[argv.release];
+  Object.entries(readResult.Changes).forEach((entry) => {
+    let key = entry[0];
+    let change = entry[1];
 
-  if (argv.r) {
-    Object.entries(readResult.Changes).forEach((entry) => {
-      let key = entry[0];
-      let change = entry[1];
-      if (change.Release === argv.release) {
-        delete readResult.Changes[key];
+    if (argv.c) {
+      if (key === argv.c) {
+        readResult.Changes[key].Release = argv.r;
       }
-    });
-  }
+    } else {
+      if (!change.Release) {
+        readResult.Changes[key].Release = argv.r;
+      }
+    }
+  });
 
-  let writeResult = helpers.writeToChangeLogJson(readResult, argv.f);
+  let writeResult = helpers.writeToChangeLogJson(readResult, argv.o);
 
   if (writeResult.err) {
     if (argv.verbose) {
@@ -61,5 +64,5 @@ exports.handler = function (argv) {
     return false;
   }
 
-  console.log('Removed Release ' + argv.release);
+  console.log('Added Release ' + argv.r);
 };

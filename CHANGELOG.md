@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.1.1] - 2023-04-21
+
+### Fixed: 
+
+- Issue with release with no sections crashing. (#5)
+- Issue with releases set command. (#5)
+
+
 ## [1.1.0] - 2023-04-06
 
 ### Added: 

@@ -40,6 +40,20 @@
     "Security": []
    },
    "Release": "1.1.0"
+  },
+  "5": {
+   "Sections": {
+    "Added": [],
+    "Changed": [],
+    "Deprecated": [],
+    "Removed": [],
+    "Fixed": [
+     "Issue with release with no sections crashing",
+     "Issue with releases set command"
+    ],
+    "Security": []
+   },
+   "Release": "1.1.1"
   }
  },
  "Releases": {
@@ -51,6 +65,9 @@
   },
   "1.1.0": {
    "Date": "2023-04-06T03:00:00.000Z"
+  },
+  "1.1.1": {
+   "Date": "2023-04-21T03:00:00.000Z"
   }
  }
 }

@@ -37,11 +37,11 @@ exports.handler = function (argv) {
 
     if (argv.c) {
       if (key === argv.c) {
-        readResult.Changes[key].Release = argv.r;
+        readResult.Changes[key].Release = argv.release;
       }
     } else {
       if (!change.Release) {
-        readResult.Changes[key].Release = argv.r;
+        readResult.Changes[key].Release = argv.release;
       }
     }
   });
@@ -64,5 +64,5 @@ exports.handler = function (argv) {
     return false;
   }
 
-  console.log('Added Release ' + argv.r);
+  console.log('Added Release ' + argv.release);
 };

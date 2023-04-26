@@ -15,7 +15,7 @@ beforeEach(() => {
     '__mocks__':  mockfs.load(path.resolve(__dirname, '../../../__mocks__')),
     'node_modules': mockfs.load(path.resolve(__dirname, '../../../node_modules')),
     'package.json': mockfs.load(path.resolve(__dirname, '../../../package.json')),
-    'CHANGELOG.json': '{"Changes":{"123":{"Release":"2023.5.0","Sections":{"Added":["Added stuff to thing.","Some other stuff."]}}},"Releases":{"2023.5.0":{"Date":"2023-03-23T03:00:00.000Z"}}}',
+    'CHANGELOG.json': '{"Changes":{"123":{"Release":"2023.5.0","Sections":{"Added":["Added stuff to thing.","Some other stuff."]}},"124":{"Release":"2023.6.0","Sections":{"Added":["Added stuff to thing.","Some other stuff."]}}},"Releases":{"2023.5.0":{"Date":"2023-03-23T03:00:00.000Z"},"2023.6.0":{"Date":"2023-03-24T03:00:00.000Z"}}}',
   });
 });
 
@@ -32,6 +32,14 @@ describe('Testing Command Build', () => {
       'All notable changes to this project will be documented in this file.\n' +
       '\n' +
       'The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).\n' +
+      '\n' +
+      '## [2023.6.0] - 2023-03-24\n' +
+      '\n' +
+      '### Added: \n' +
+      '\n' +
+      '- Added stuff to thing. (#124)\n' +
+      '- Some other stuff. (#124)\n' +
+      '\n' +
       '\n' +
       '## [2023.5.0] - 2023-03-23\n' +
       '\n' +
@@ -57,6 +65,14 @@ describe('Testing Command Build', () => {
       'All notable changes to this project will be documented in this file.\n' +
       '\n' +
       'The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).\n' +
+      '\n' +
+      '## [2023.6.0] - 2023-03-24\n' +
+      '\n' +
+      '### Added: \n' +
+      '\n' +
+      '- Added stuff to thing. ([#124](https://office.thinkingbig.net/GH/awesomeware/-/merge_requests/124))\n' +
+      '- Some other stuff. ([#124](https://office.thinkingbig.net/GH/awesomeware/-/merge_requests/124))\n' +
+      '\n' +
       '\n' +
       '## [2023.5.0] - 2023-03-23\n' +
       '\n' +

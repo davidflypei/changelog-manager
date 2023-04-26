@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.1.2] - 2023-04-26
+
+### Fixed: 
+
+- Fixed multiple changes in one release section not working. (#6)
+
+
 ## [1.1.1] - 2023-04-21
 
 ### Fixed: 

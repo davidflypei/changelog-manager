@@ -15,7 +15,7 @@ beforeEach(() => {
     '__mocks__':  mockfs.load(path.resolve(__dirname, '../../../__mocks__')),
     'node_modules': mockfs.load(path.resolve(__dirname, '../../../node_modules')),
     'package.json': mockfs.load(path.resolve(__dirname, '../../../package.json')),
-    'CHANGELOG.json': '{"Changes":{"123":{"Release":"2023.5.0","Sections":{"Added":["Added stuff to thing.","Some other stuff."]}},"124":{"Release":"2023.6.0","Sections":{"Added":["Added stuff to thing.","Some other stuff."]}}},"Releases":{"2023.5.0":{"Date":"2023-03-23T03:00:00.000Z"},"2023.6.0":{"Date":"2023-03-24T03:00:00.000Z"}}}',
+    'CHANGELOG.json': '{"Changes":{"123":{"Release":"2023.5.0","Sections":{"Added":["Added stuff to thing.","Some other stuff."]}},"124":{"Release":"2023.6.0","Sections":{"Added":["Added stuff to thing.","Some other stuff."]}},"122":{"Release":"2023.5.0","Sections":{"Added":["Added stuff to thing.","Some other stuff."]}}},"Releases":{"2023.5.0":{"Date":"2023-03-23T03:00:00.000Z"},"2023.6.0":{"Date":"2023-03-24T03:00:00.000Z"}}}',
   });
 });
 
@@ -45,6 +45,8 @@ describe('Testing Command Build', () => {
       '\n' +
       '### Added: \n' +
       '\n' +
+      '- Added stuff to thing. (#122)\n' +
+      '- Some other stuff. (#122)\n' +
       '- Added stuff to thing. (#123)\n' +
       '- Some other stuff. (#123)\n' +
       '\n' +
@@ -78,6 +80,8 @@ describe('Testing Command Build', () => {
       '\n' +
       '### Added: \n' +
       '\n' +
+      '- Added stuff to thing. ([#122](https://office.thinkingbig.net/GH/awesomeware/-/merge_requests/122))\n' +
+      '- Some other stuff. ([#122](https://office.thinkingbig.net/GH/awesomeware/-/merge_requests/122))\n' +
       '- Added stuff to thing. ([#123](https://office.thinkingbig.net/GH/awesomeware/-/merge_requests/123))\n' +
       '- Some other stuff. ([#123](https://office.thinkingbig.net/GH/awesomeware/-/merge_requests/123))\n' +
       '\n' +

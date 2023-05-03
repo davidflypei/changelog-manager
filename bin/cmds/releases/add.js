@@ -1,24 +1,20 @@
 const dayjs = require('dayjs');
 const helpers = require('../../../lib/helpers');
 
-exports.command = 'add';
-exports.desc = 'Adds release to json file.';
+exports.command = 'add <release>';
+exports.desc = 'Adds release entry.';
 exports.builder = {
-  r: {
+  release: {
     demand: true,
-    description: 'Release'
+    description: 'Release name. E.g. 1.1.0'
   },
   d: {
-    default: '',
+    default: null,
     description: "Date of the release."
-  },
-  o: {
-    description: 'JSON file to save to.',
-    default: 'CHANGELOG.json',
   },
 };
 exports.handler = function (argv) {
-  let readResult = helpers.readChangeLogJson(argv.o)
+  let readResult = helpers.readReleaseJSONFile(argv.release)
 
   if (readResult.err) {
     if (argv.verbose) {
@@ -36,20 +32,15 @@ exports.handler = function (argv) {
     return false;
   }
 
-  if (readResult.Releases[argv.r] && argv.d === ``) {
-    console.error(argv.r + ' already exists.');
+  if (readResult.Version && (argv.d === null || argv.d === '')) {
+    console.error(argv.release + ' already exists.');
     return false;
   }
 
-  readResult.Releases[argv.r] = {
-    "Date": null,
-  }
+  readResult.Version = argv.release;
+  readResult.Date = argv.d !== null ? dayjs(argv.d).toJSON() : null;
 
-  if (argv.d) {
-    readResult.Releases[argv.r].Date = dayjs(argv.d).toJSON();
-  }
-
-  let writeResult = helpers.writeToChangeLogJson(readResult, argv.o);
+  let writeResult = helpers.writeToReleaseJSONFile(readResult, argv.release);
 
   if (writeResult.err) {
     if (argv.verbose) {
@@ -67,5 +58,5 @@ exports.handler = function (argv) {
     return false;
   }
 
-  console.log('Added Release ' + argv.r);
+  console.log('Added Release ' + argv.release);
 };

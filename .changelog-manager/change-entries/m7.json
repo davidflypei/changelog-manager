@@ -1,0 +1,19 @@
+{
+ "Sections": {
+  "Added": [
+   "Added links to issues instead of links to merge requests",
+   "Added config file",
+   "Added an init command to initialize the required folders and config file"
+  ],
+  "Changed": [
+   "Changed from using a single json file to using a json file for each change due to issues with conflicts when merging"
+  ],
+  "Deprecated": [],
+  "Removed": [],
+  "Fixed": [],
+  "Security": []
+ },
+ "ID": "m7",
+ "Release": "2.0.0",
+ "Issues": null
+}

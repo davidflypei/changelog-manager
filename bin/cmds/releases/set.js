@@ -2,67 +2,34 @@ const dayjs = require('dayjs');
 const helpers = require('../../../lib/helpers');
 
 exports.command = 'set <release>';
-exports.desc = 'Sets a release to a change or all changes with no release.';
+exports.desc = 'Sets a release on a change or all changes with no release.';
 exports.builder = {
-  c: {
-    description: 'Change to set release to.',
+  release: {
+    demand: true,
+    description: "Release to set change(s) to."
   },
-  o: {
-    description: 'JSON file to save to.',
-    default: 'CHANGELOG.json',
+  c: {
+    description: 'Change to set release on.',
   },
 };
 exports.handler = function (argv) {
-  let readResult = helpers.readChangeLogJson(argv.o)
+  let changes = helpers.loadChangeFiles();
 
-  if (readResult.err) {
-    if (argv.verbose) {
-      console.error(readResult.err);
-    } else {
-      switch (readResult.err.code && readResult.err.code.toUpperCase()) {
-        case 'EACCES':
-          console.error('Error: Permission denied to open file');
-          break;
-        default:
-          console.error(`Error: ${readResult.err.message}`);
-          break;
-      }
-    }
-    return false;
-  }
-
-  Object.entries(readResult.Changes).forEach((entry) => {
-    let key = entry[0];
-    let change = entry[1];
-
+  Object.values(changes).forEach((change) => {
     if (argv.c) {
-      if (key === argv.c) {
-        readResult.Changes[key].Release = argv.release;
+      if (change.ID === argv.c) {
+        change.Release = argv.release;
+        helpers.writeToChangeJSONFile(change, change.ID);
+        console.log('Set change ' + change.ID + ' to release ' + argv.release);
       }
     } else {
       if (!change.Release) {
-        readResult.Changes[key].Release = argv.release;
+        change.Release = argv.release;
+        helpers.writeToChangeJSONFile(change, change.ID);
+        console.log('Set change ' + change.ID + ' to release ' + argv.release);
       }
     }
   });
 
-  let writeResult = helpers.writeToChangeLogJson(readResult, argv.o);
-
-  if (writeResult.err) {
-    if (argv.verbose) {
-      console.error(writeResult.err);
-    } else {
-      switch (writeResult.err.code && writeResult.err.code.toUpperCase()) {
-        case 'EACCES':
-          console.error('Error: Permission denied to write file');
-          break;
-        default:
-          console.error(`Error: ${writeResult.err.message}`);
-          break;
-      }
-    }
-    return false;
-  }
-
-  console.log('Added Release ' + argv.release);
+  console.log('Done!');
 };

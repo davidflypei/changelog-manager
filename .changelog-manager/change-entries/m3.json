@@ -1,0 +1,17 @@
+{
+ "Sections": {
+  "Added": [
+   "Added Release set command, so you can bulk set releases on changes"
+  ],
+  "Changed": [
+   "If you use -d on releases add it will now set the release date"
+  ],
+  "Deprecated": [],
+  "Removed": [],
+  "Fixed": [],
+  "Security": []
+ },
+ "ID": "m3",
+ "Release": "1.1.0",
+ "Issues": null
+}

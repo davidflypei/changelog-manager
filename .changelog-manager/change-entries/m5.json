@@ -1,0 +1,16 @@
+{
+ "Sections": {
+  "Added": [],
+  "Changed": [],
+  "Deprecated": [],
+  "Removed": [],
+  "Fixed": [
+   "Issue with release with no sections crashing",
+   "Issue with releases set command"
+  ],
+  "Security": []
+ },
+ "ID": "m5",
+ "Release": "1.1.1",
+ "Issues": null
+}

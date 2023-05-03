@@ -1,59 +1,39 @@
 const fs = require('fs');
 const helpers = require('../../../lib/helpers');
 
-exports.command = 'add';
-exports.desc = 'Parses and saves content from changes file to json file.';
+exports.command = 'add <ID>';
+exports.desc = 'Parses and saves content from changes file to a change json file.';
 exports.builder = {
-  n: {
+  ID: {
     demand: true,
-    description: 'Reference value. Typically MR number.'
+    description: 'ID value. Typically MR number.'
   },
   r: {
-    default: '',
-    description: "Release changes are associated with."
+    default: null,
+    description: "The release changes are associated with."
+  },
+  issues: {
+    default: null,
+    description: "Issue numbers associated with change. Comma separated."
   },
   i: {
     default: 'CHANGES.md',
     description: 'Input changes file.'
-  },
-  o: {
-    description: 'JSON file to save to.',
-    default: 'CHANGELOG.json',
   },
   s: {
     description: 'Strict mode. Errors on non standard sections.'
   }
 };
 exports.handler = function (argv) {
-  let readResult = helpers.readChangeLogJson(argv.o);
-
-  if (readResult.err) {
-    if (argv.verbose) {
-      console.error(readResult.err);
-    } else {
-      switch (readResult.err.code.toUpperCase()) {
-        case 'EACCES':
-          console.error('Error: Permission denied to open file');
-          break;
-        default:
-          console.error(`Error: ${readResult.err.message}`);
-          break;
-      }
-    }
-
-    return false;
-  }
-
   let content = fs.readFileSync(argv.i);
-  let changes = helpers.parseChanges(content);
+  let change = {}
 
-  if (argv.r) {
-    changes.Release = argv.r;
-  }
+  change.Sections = helpers.parseChanges(content);
+  change.ID = argv.ID;
+  change.Release = argv.r;
+  change.Issues = argv.issues !== null ? argv.issues.toString().split(',') : null;
 
-  readResult.Changes[argv.n] = changes;
-
-  const writeResult = helpers.writeToChangeLogJson(readResult, argv.o);
+  const writeResult = helpers.writeToChangeJSONFile(change, argv.ID);
 
   if (writeResult.err) {
     if (argv.verbose) {
@@ -69,6 +49,6 @@ exports.handler = function (argv) {
       }
     }
   } else {
-    console.log("Added " + argv.n);
+    console.log("Added " + argv.ID);
   }
 };

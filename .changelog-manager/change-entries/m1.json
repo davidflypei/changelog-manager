@@ -1,0 +1,19 @@
+{
+ "Sections": {
+  "Added": [
+   "Changes add command",
+   "Releases add command",
+   "Releases remove command",
+   "Build command",
+   "Cat command"
+  ],
+  "Changed": [],
+  "Deprecated": [],
+  "Removed": [],
+  "Fixed": [],
+  "Security": []
+ },
+ "ID": "m1",
+ "Release": "1.0.0",
+ "Issues": null
+}

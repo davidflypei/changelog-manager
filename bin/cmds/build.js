@@ -1,44 +1,32 @@
 const fs = require('fs');
 const dayjs = require('dayjs');
 const helpers = require('../../lib/helpers');
-
+const config = helpers.readConfig()
 
 exports.command = 'build';
 exports.desc = 'Builds changelog from JSON file.';
 exports.builder = {
-  i: {
-    default: 'CHANGELOG.json',
-    description: 'Input json file.'
+  l: {
+    description: 'Issue link prefix. Change issues get appended to this.',
+    default: config.IssuesLink ?? null
   },
   o: {
     description: 'File to save to.',
     default: 'CHANGELOG.md',
   },
-  l: {
-    description: 'Reference link prefix. Change reference gets appended to this.'
-  },
+  header: {
+    description: 'Header content to output.',
+    default: config.HeaderContent ?? null
+  }
 };
 exports.handler = function (argv) {
-  let readResult = helpers.readChangeLogJson(argv.i);
-
-  if (readResult.err) {
-    if (argv.verbose) {
-      console.error(readResult.err);
-    } else {
-      switch (readResult.err.code.toUpperCase()) {
-        case 'EACCES':
-          console.error('Error: Permission denied to open file');
-          break;
-        default:
-          console.error(`Error: ${readResult.err.message}`);
-          break;
-      }
-    }
-    return false;
+  let changes = {
+    "Changes": helpers.loadChangeFiles(),
+    "Releases": helpers.loadReleaseFiles(),
   }
 
-  let output = helpers.buildChangeLogObject(readResult);
-  let outputContent = helpers.buildChangeLogContent(output, argv.l);
+  let output = helpers.buildChangeLogObject(changes);
+  let outputContent = helpers.buildChangeLogContent(output, argv.l, argv.header);
 
   try {
     fs.writeFileSync(argv.o, outputContent)

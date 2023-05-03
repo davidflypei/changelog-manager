@@ -1,0 +1,16 @@
+{
+ "Sections": {
+  "Added": [],
+  "Changed": [],
+  "Deprecated": [],
+  "Removed": [],
+  "Fixed": [
+   "Fixed release action",
+   "Fixed build and cat outputting empty sections"
+  ],
+  "Security": []
+ },
+ "ID": "m2",
+ "Release": "1.0.1",
+ "Issues": null
+}

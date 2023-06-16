@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [2.0.4] - 2023-06-16
+
+### Fixed: 
+
+- Actually fixing sorting. Versions are stored as stings, and it was having issues comparing strings.
+
+
 ## [2.0.3] - 2023-06-16
 
 ### Fixed: 

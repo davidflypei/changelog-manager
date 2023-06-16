@@ -1,0 +1,15 @@
+{
+ "Sections": {
+  "Added": [],
+  "Changed": [],
+  "Deprecated": [],
+  "Removed": [],
+  "Fixed": [
+   "Actually fixing sorting. Versions are stored as stings, and it was having issues comparing strings"
+  ],
+  "Security": []
+ },
+ "ID": "m11",
+ "Release": "2.0.4",
+ "Issues": null
+}
